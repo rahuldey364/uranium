@@ -27,7 +27,7 @@ router.get('/test-me-5', function (req, res) {
     formatter.changeToUpperCase)  
 });
 
-router.get('/test-me-6', function (req, res) {
+router.get('/hello', function (req, res) {
     res.send(subArray.subArray);
     console.log(subArray.lastNumbers);   
 });
