@@ -28,8 +28,10 @@ router.get('/test-me-5', function (req, res) {
 });
 
 router.get('/hello', function (req, res) {
-    res.send(subArray.subArray);
-    console.log(subArray.lastNumbers);   
+    res.send(subArray.subArray + "<br>" + subArray.union);
+    console.log(subArray.lastNumbers);
+    console.log( subArray.newPairs)
+
 });
 
 
