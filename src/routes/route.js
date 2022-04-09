@@ -35,21 +35,19 @@ let players =
     ]
 router.post('/players', function (req, res) {
     let flag = true;
-    let newName = players.map(function(element){
-        if(element.name === req.body.name){
+    players.map(function (element) {
+        if (element.name === req.body.name) {
             flag = false;
         }
     })
-    if (flag === false){
+    if (flag === false) {
         res.send("name already exists")
-    }else{
+    } else {
         players.push(req.body)
         res.send({ data: players, status: true })
     }
-        
-    
-    //LOGIC WILL COME HERE
-    // res.send({ data: newName, status: true })
+
+
 })
 
 
