@@ -1,18 +1,61 @@
 const express = require('express');
-const logger = require('./logger')
 
 const router = express.Router();
 
-router.get('/test-me', function (req, res) {
-    console.log('------------------')
-    console.log(req)
-    console.log('------------------')
-    console.log('These are the request query parameters: ', req.query)
-    res.send('My first ever api!')
-});
+
+let players =
+    [
+        {
+            "name": "manish",
+            "dob": "1/1/1995",
+            "gender": "male",
+            "city": "jalandhar",
+            "sports": [
+                "swimming"
+            ]
+        },
+        {
+            "name": "gopal",
+            "dob": "1/09/1995",
+            "gender": "male",
+            "city": "delhi",
+            "sports": [
+                "soccer"
+            ]
+        },
+        {
+            "name": "lokesh",
+            "dob": "1/1/1990",
+            "gender": "male",
+            "city": "mumbai",
+            "sports": [
+                "soccer"
+            ]
+        },
+    ]
+router.post('/players', function (req, res) {
+    let flag = true;
+    let newName = players.map(function(element){
+        if(element.name === req.body.name){
+            flag = false;
+        }
+    })
+    if (flag === false){
+        res.send("name already exists")
+    }else{
+        players.push(req.body)
+        res.send({ data: players, status: true })
+    }
+        
+    
+    //LOGIC WILL COME HERE
+    // res.send({ data: newName, status: true })
+})
+
+
+
 
 
 
 
 module.exports = router;
-// adding this comment for no reason
