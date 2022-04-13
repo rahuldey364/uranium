@@ -19,16 +19,15 @@ const getBooksInYear=  async function(req,res){
 }
 
 const getParticularBooks=  async function(req,res){
-    let key= Object.keys(req.body)
-    let value= Object.values(req.body)
-    let allBooks= await BookModel.find( {[key] : value}  )
+    let condition = req.body
+    let allBooks= await BookModel.find( condition  )
     res.send(allBooks)
 }
 
 const getXINRBooks=  async function(req,res){
     
     let allBooks= await BookModel.find( { 
-        $or: [ {"prices.indianPrice" : "₹399" } ,{"prices.indianPrice" : "₹1199" },{"prices.indianPrice" : "₹499" }]
+        'prices.indianPrice': { $in: [ "599INR" , "399INR", "499INR" ] } 
     })
     res.send(allBooks)
 }
