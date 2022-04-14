@@ -42,12 +42,12 @@ const authorNames = async function(req,res){
     let id =  fBooks.map(x => x.author_id)
     let authorN = []
     for(i=0;i<id.length;i++){
-        let x = b[i];
+        let x = id[i];
         let newBooks = await authorModel.find({author_id:x}).select({author_name:1,_id:0})
         authorN.push(newBooks)
     }
 
-    res.send(authorN)
+    res.send(authorN.flat())
 }
 
 
